@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
 class ComponentBase extends Controller
 {
+
 
 	public function store()
 	{
 		$request = request();
 		$data['type'] = $this->type;
 
-
 		$data['config'] = json_encode($request->formData);
+		$this->validate($request,$this->validationRules);
 
 		if($request->formData['id'])
 			DB::table("components")->where("id",$request->formData['id'])->update($data);

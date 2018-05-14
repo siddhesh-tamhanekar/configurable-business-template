@@ -14,3 +14,24 @@ $primary:#FFF;
 a{
 	transition:.2s
 }
+
+
+
+/// my css
+.justify-content-center{
+	display:flex;
+	justify-content:center;
+	height:calc(100vh - 60px);
+	align-items:center;
+}
+
+.card{
+	padding:30px 20px;
+
+	.card-header{
+
+		font-size:1.5em;
+		text-align:ceter;
+		font-weight:bold;
+	}
+}

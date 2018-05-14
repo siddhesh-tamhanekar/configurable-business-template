@@ -46,7 +46,7 @@
 
 			<section>
 				<h3 class="subtitle">Settings</h3>
-				<bulmaText label='Title' v-model='data.title' :horizontal='true'></bulmaText>
+				<bulmaText label='Title' v-model='data.title'  :horizontal='true'></bulmaText>
 				<bulmaText label='Description' v-model='data.desc' :horizontal='true'></bulmaText>
 
 			</section>

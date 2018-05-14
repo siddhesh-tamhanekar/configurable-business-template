@@ -9,3 +9,26 @@ a {
   transition: .2s;
 }
 
+.justify-content-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: calc(100vh - 60px);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.card {
+  padding: 30px 20px;
+}
+
+.card .card-header {
+  font-size: 1.5em;
+  text-align: ceter;
+  font-weight: bold;
+}
+

@@ -502,13 +502,14 @@ module.exports = {
 
     data: function data() {
         return {
-            editing: false
+            editing: false,
+            errors: {}
         };
     },
     created: function created() {
         var _this = this;
 
-        axios.get("get/" + this.type).then(function (_ref) {
+        axios.get("/admin/get/" + this.type).then(function (_ref) {
             var data = _ref.data;
 
             console.log(data);
@@ -522,10 +523,19 @@ module.exports = {
 
     methods: {
         save: function save() {
-            axios.post("store/" + this.type, { formData: this.data }).then(function (_ref2) {
+            var _this2 = this;
+
+            axios.post("/admin/store/" + this.type, { formData: this.data }).then(function (_ref2) {
                 var data = _ref2.data;
 
                 console.log("stored successfuly");
+            }).catch(function (err) {
+                if (err.response.status == 422) {
+                    for (var i in err.response.data.errors) {
+                        console.log(i, err.response.data.errors[i][0]);
+                        _this2.errors[i] = err.response.data.errors[i][0];
+                    }
+                }
             });
         },
         addItem: function addItem() {
@@ -4021,7 +4031,7 @@ new Vue({
 	created: function created() {
 		var _this = this;
 
-		axios.get("component-list").then(function (_ref) {
+		axios.get("/admin/component-list").then(function (_ref) {
 			var data = _ref.data;
 
 			_this.components = data;
@@ -18801,7 +18811,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	created: function created() {
 		var _this = this;
 
-		axios.get("component-list").then(function (res) {
+		axios.get("/admin/component-list").then(function (res) {
 			_this.componentList = res.data;
 			for (var i in _this.componentList) {
 				if (!_this.data.components[_this.componentList[i].class]) _this.data.components[_this.componentList[i].class] = { status: 0, sort: 0 };
@@ -19281,7 +19291,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	created: function created() {
 		var _this = this;
 
-		axios.get("blog").then(function (response) {
+		axios.get("/admin/blog").then(function (response) {
 			console.log(response);
 			_this.posts = response.data;
 		});
@@ -19296,9 +19306,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 			if (this.post.id) {
 				//this.post._method='PUT'
-				axios.put("blog/" + this.post.id, this.post);
+				axios.put("/admin/blog/" + this.post.id, this.post);
 			} else {
-				axios.post("blog", this.post);
+				axios.post("/admin/blog/", this.post);
 			}
 
 			this.post = {
@@ -19312,12 +19322,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.openModal = false;
 		},
 		deletePost: function deletePost(postId) {
-			axios.delete("blog/" + postId);
+			axios.delete("/admin/blog/" + postId);
 		},
 		edit: function edit(postId) {
 			var _this2 = this;
 
-			axios.get("blog/" + postId).then(function (_ref) {
+			axios.get("/admin/blog/" + postId).then(function (_ref) {
 				var data = _ref.data;
 
 				_this2.post = data;

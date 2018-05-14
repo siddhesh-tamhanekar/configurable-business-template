@@ -2,22 +2,28 @@
 
 Route::get("/",function(){
 	return view("pages.home");
+})->name("main");
+
+Route::get("/home",function(){
+	return redirect("/admin//");
 });
 
-Route::get("/upload",function(){
-	return view("demo.upload");
-});
+Route::get("/automaticLogin",function(){
+	$user = new App\User;
+	$user = $user->find(1);
+	Auth::login($user);
 
-Route::post("/upload",function(){
-	dd(request());
 });
 
 
 Route::get("blog/{post}",'BlogController@show')->name("blog.show");
 
-Route::group(['prefix'=>"admin"],function(){
+Route::group([
+			'prefix'=>"admin",
+			'middleware'=>'auth'
+		],function() {
 
-	Route::get("/","AdminController@index");
+	Route::get("/","AdminController@index")->name("home");
 
 	Route::get("component-list","AdminController@componentList");
 
@@ -28,4 +34,12 @@ Route::group(['prefix'=>"admin"],function(){
 	Route::post("upload","AdminController@uploadImage");
 
 	Route::apiResources(["blog"=>"BlogController"]);
+
 });
+
+# we don't need all users bcoz we have only one user admin.
+Route::get("/login","Auth\LoginController@showLoginForm")->name("login");
+Route::post("/login","Auth\LoginController@login")->name("login");
+Route::post("/logout","Auth\LoginController@logout")->name("logout");
+
+

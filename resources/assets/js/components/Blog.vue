@@ -85,7 +85,7 @@ export default Component.extend({
 	},
 	created(){
 
-		axios.get("blog").then((response) => {
+		axios.get("/admin/blog").then((response) => {
 			console.log(response)
 			this.posts = response.data
 		})
@@ -99,9 +99,9 @@ export default Component.extend({
 
 			if(this.post.id) {
 				//this.post._method='PUT'
-				axios.put("blog/"+this.post.id,this.post)
+				axios.put("/admin/blog/"+this.post.id,this.post)
 			} else {
-				axios.post("blog", this.post)
+				axios.post("/admin/blog/", this.post)
 			}
 
 			this.post = {
@@ -115,11 +115,11 @@ export default Component.extend({
 			this.openModal = false
 		},
 		deletePost(postId){
-			axios.delete("blog/"+postId)
+			axios.delete("/admin/blog/"+postId)
 		},
 
 		edit(postId){
-			axios.get("blog/"+postId).then(({data})=>{
+			axios.get("/admin/blog/"+postId).then(({data})=>{
 				this.post = data
 				this.openModal = true
 			})

@@ -7,12 +7,16 @@ use App\Http\Controllers\ComponentBase as Controller;
 
 class Services extends Controller
 {
-	protected $type='Services';
+	protected $type = 'Services';
 
-    public function index()
+	protected $validationRules = [];
+
+
+   public function index()
     {
 
     	$services = $this->get();
     	return view("pages.services",(array)$services->config);
     }
+
 }

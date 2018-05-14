@@ -55,7 +55,7 @@ new Vue({
     	components:[]
     },
     created() {
-    	axios.get("component-list").then(({data})=>{
+    	axios.get("/admin/component-list").then(({data})=>{
     		this.components = data
     	})
 

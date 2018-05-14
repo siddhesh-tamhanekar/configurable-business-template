@@ -8,11 +8,12 @@ export default Vue.extend({
     data(){
         return {
             editing:false,
+            errors:{}
         }
     },
 
     created() {
-        axios.get("get/"+this.type).then(({data}) => {
+        axios.get("/admin/get/"+this.type).then(({data}) => {
             console.log(data)
             if(data.id){
                 this.data = data.config
@@ -24,9 +25,16 @@ export default Vue.extend({
 
     methods:{
         save() {
-            axios.post("store/"+this.type,{formData:this.data})
+            axios.post("/admin/store/"+this.type,{formData:this.data})
             .then(({data}) => {
                 console.log("stored successfuly")
+            }).catch((err)=>{
+                if(err.response.status == 422){
+                    for(var i in err.response.data.errors){
+                        console.log(i,err.response.data.errors[i][0])
+                        this.errors[i] = err.response.data.errors[i][0]
+                    }
+                }
             })
 
         },
@@ -56,6 +64,7 @@ export default Vue.extend({
 
             this.editing = index
             this.openModal = true
-        }
+        },
+
     }
 })

@@ -52,7 +52,7 @@ export default Component.extend({
 	},
 
 	created() {
-		axios.get("component-list").then((res) => {
+		axios.get("/admin/component-list").then((res) => {
 			this.componentList = res.data
 			for(let i in this.componentList) {
 				if(!this.data.components[this.componentList[i].class ])

@@ -39,7 +39,13 @@ class AdminController extends Controller
 
 	public function uploadImage()
 	{
-		$path = asset(request()->file->store("public/images"));
-		return response()->json(["image" => str_replace("public", "storage", $path)]);
+		if(request()->hasFile('file') and request()->file->isValid()) {
+
+			$path = asset(request()->file->store("public/images"));
+
+			# change path public folder to storage folder.
+			return response()->json(["image" => str_replace("public", "storage", $path)]);
+		}
+
 	}
 }
