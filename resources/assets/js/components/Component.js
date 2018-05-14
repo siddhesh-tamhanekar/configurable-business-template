@@ -27,6 +27,7 @@ export default Vue.extend({
         save() {
             axios.post("/admin/store/"+this.type,{formData:this.data})
             .then(({data}) => {
+                window.events.$emit("showSuccess");
                 console.log("stored successfuly")
             }).catch((err)=>{
                 if(err.response.status == 422){

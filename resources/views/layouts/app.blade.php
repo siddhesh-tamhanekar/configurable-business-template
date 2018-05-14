@@ -4,17 +4,17 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> {{ config('app.name', 'Laravel') }}</title>
+    <title> {{ __("Admin Dashboard") }}</title>
     <link rel="stylesheet" href="{{url('css/bulma.min.css')}}">
     <link rel="stylesheet" href="{{url('css/app.css')}}">
     <link rel="author" href="humans.txt">
 </head>
 <body>
     <div id="app1">
-        <nav class="navbar">
+        <nav class="navbar is-primary">
             <div class="navbar-brand">
                 <a class="navbar-item" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ __("Admin Dashboard") }}
                 </a>
             </div>
             <div class="navbar-end ">

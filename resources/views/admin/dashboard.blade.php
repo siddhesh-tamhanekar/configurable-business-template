@@ -27,6 +27,16 @@
 				<div class="column ">
 					<router-view class='animated fadeIn ' ></router-view>
 				</div>
+
+				<bulmaModal :open-modal='openModal' @close="openModal=false">
+					<div style="text-align: center">
+						<p>Settings saved succesfully</p>
+						<button class='button is-primary' @click='openModal=false'> OK</button>
+
+					</div>
+				</bulmaModal>
+
+
 			</div>
 		</div>
 	</section>

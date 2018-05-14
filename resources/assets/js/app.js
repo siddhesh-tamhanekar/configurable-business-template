@@ -2,7 +2,7 @@
 import './bootstrap'
 
 import VueRouter from 'vue-router'
-
+import bulmaModal from './components/bulma/Modal'
 
 
 let router = new VueRouter({
@@ -48,16 +48,25 @@ let router = new VueRouter({
 	linkActiveClass:"is-active"
 })
 
+
+window.events = new Vue()
 new Vue({
     el: '#app',
     router,
     data:{
-    	components:[]
+    	components:[],
+    	openModal:false,
+
     },
+    components:{"bulmamodal":bulmaModal},
     created() {
     	axios.get("/admin/component-list").then(({data})=>{
     		this.components = data
     	})
 
+    	window.events.$on("showSuccess",()=>{
+    		this.openModal = true
+    		console.log("event catched")
+    	})
     }
 });

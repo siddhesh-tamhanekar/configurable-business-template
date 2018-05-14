@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class ComponentBase extends Controller
 {
 
-
+	protected $validationRules = [];
 	public function store()
 	{
 		$request = request();

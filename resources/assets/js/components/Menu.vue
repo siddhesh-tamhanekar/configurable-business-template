@@ -56,7 +56,10 @@ export default Component.extend({
 			this.componentList = res.data
 			for(let i in this.componentList) {
 				if(!this.data.components[this.componentList[i].class ])
-					this.data.components[this.componentList[i].class ]= { status:0,sort:0 }
+					this.data.components[this.componentList[i].class ] = {
+						status:0,
+						sort:0
+					}
 			}
 		})
 	},
