@@ -1,6 +1,10 @@
 # Introduction
 The repository contains the laravel based SPA  business template which can be configured through admin panel efficiently.
 
+# Technologies used.
+
+* Vue (admin panel)
+* Laravel (backend)
 
 
 **Components that can  be easily configured**
@@ -35,5 +39,6 @@ go to domain-name.com/project-root/login
 # Backend screenshot
  ![GitHub Logo](/ss/feature_view.jpg)
 
-#Credits
+# Credits
+
 Template used from https://onepagelove.com/mate
