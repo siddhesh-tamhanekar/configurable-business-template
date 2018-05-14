@@ -29,5 +29,7 @@ go to <domain-name>/<project-root>/login
 **Admin Credintials:** admin@gmail.com / 123456
 
 
- ![GitHub Logo](/ss/frontend.png)
+ ![GitHub Logo](/ss/frontend.jpg)
 
+#Credits
+Template used from https://onepagelove.com/mate
