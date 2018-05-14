@@ -25,11 +25,14 @@ php artisan migrate --seed
 ```
 
 # Usage
-go to <domain-name>/<project-root>/login
+go to domain-name.com/project-root/login
 **Admin Credintials:** admin@gmail.com / 123456
 
-
+#Frontend screenshot
  ![GitHub Logo](/ss/frontend.jpg)
+
+#Backend screenshot
+ ![GitHub Logo](/ss/feature_view.jpg)
 
 #Credits
 Template used from https://onepagelove.com/mate
