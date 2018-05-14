@@ -26,12 +26,13 @@ php artisan migrate --seed
 
 # Usage
 go to domain-name.com/project-root/login
+
 **Admin Credintials:** admin@gmail.com / 123456
 
-#Frontend screenshot
+# Frontend screenshot
  ![GitHub Logo](/ss/frontend.jpg)
 
-#Backend screenshot
+# Backend screenshot
  ![GitHub Logo](/ss/feature_view.jpg)
 
 #Credits
